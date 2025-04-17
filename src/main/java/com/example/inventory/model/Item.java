@@ -6,33 +6,36 @@ import jakarta.persistence.*;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(unique = true, nullable = false)
+    private String itemCode;
 
     private String name;
     private String category;
     private String unit;
+    private int length;
+    private int quantity;
     private String description;
 
     // Constructors
-    public Item() {
-    }
+    public Item() {}
 
-    public Item(Long id, String name, String category, String unit, String description) {
-        this.id = id;
+    public Item(String itemCode, String name, String category, int length, int quantity, String unit, String description) {
+        this.itemCode = itemCode;
         this.name = name;
         this.category = category;
         this.unit = unit;
+        this.length = length;
+        this.quantity = quantity;
         this.description = description;
     }
 
     // Getters & Setters
-    public Long getId() {
-        return id;
+    public String getItemCode() {
+        return itemCode;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setItemCode(String itemCode) {
+        this.itemCode = itemCode;
     }
 
     public String getName() {
@@ -57,6 +60,22 @@ public class Item {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public String getDescription() {

@@ -25,14 +25,14 @@ public class ItemController {
         return itemRepo.save(item);
     }
 
-    @PutMapping("/{id}")
-    public Item updateItem(@PathVariable Long id, @RequestBody Item item) {
-        item.setId(id);
+    @PutMapping("/{itemCode}")
+    public Item updateItem(@PathVariable String itemCode, @RequestBody Item item) {
+        item.setItemCode(itemCode);
         return itemRepo.save(item);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteItem(@PathVariable Long id) {
-        itemRepo.deleteById(id);
+    @DeleteMapping("/{itemCode}")
+    public void deleteItem(@PathVariable String itemCode) {
+        itemRepo.deleteById(itemCode);
     }
 }
